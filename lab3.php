@@ -124,7 +124,7 @@
             public function deposit($amount) {
                 if ($amount > 0) {
                     $this->balance += $amount;
-                    return "Deposit successful.";
+                    return "Deposit of $amount.";
                 } else {
                     return "Invalid deposit amount.";
                 }
@@ -137,7 +137,7 @@
                     return "Insufficient balance.";
                 } else {
                     $this->balance -= $amount;
-                    return "Withdrawal successful.";
+                    return "Withdrawal of $amount.";
                 }
             }
         }
@@ -179,7 +179,7 @@
         </div>
 
         <div class="form-result">
-             <p><b>RESULT:</b></p>
+             <p><b>TRANSACTION RESULT:</b></p>
             <?php
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -201,7 +201,7 @@
 
                         } elseif ($action == "dep") {
                             if (is_numeric($amount)) {
-                                echo "<p>" . $atm->deposit($amount) . "</p>";
+                                echo "<p>Action: " . $atm->deposit($amount) . "</p>";
                                 echo "<p>New Balance: " . $atm->getBalance() . "</p>";
                             } else {
                                 echo "<p>Invalid deposit amount.</p>";
@@ -209,7 +209,7 @@
 
                         } elseif ($action == "with") {
                             if (is_numeric($amount)) {
-                                echo "<p>" . $atm->withdraw($amount) . "</p>";
+                                echo "<p>Action: " . $atm->withdraw($amount) . "</p>";
                                 echo "<p>New Balance: " . $atm->getBalance() . "</p>";
                             } else {
                                 echo "<p>Invalid withdrawal amount.</p>";
